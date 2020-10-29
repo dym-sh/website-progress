@@ -1,0 +1,486 @@
+:root
+  { --text : hsl( 60, 36%, 96% )
+  ; --bg : hsl( 70, 8%, 15% )
+  ; --font-size : 16pt
+  ; --line-height : 1.3em
+  }
+
+
+* { margin : 0
+  ; padding : 0
+  ; word-wrap : break-word
+  ; text-decoration : none
+  ; color : var( --text )
+  ; float : none
+  ; font-size : var( --font-size )
+  ; line-height : var( --line-height )
+  ; font-weight : normal
+  ; font-style : normal
+  ; font-family : 'DejaVu Sans Mono'
+                , 'PT Mono'
+                , 'Menlo'
+                , 'Consolas'
+                , 'Monaco'
+                , monospace
+  }
+
+body
+  { background : var( --bg )
+  ; min-width : 25em
+  ; max-width : 80vw
+  ; margin : 0 auto
+  ; padding : 2em 10em
+  }
+
+a:any-link
+  { text-decoration : underline }
+
+sub, sup
+  { font-size : 0.66em }
+
+h1, h2, h3, h4, h5, h6
+, blockquote
+, pre
+, ol
+, ul
+, li
+, article
+  { position : relative }
+
+:is( h1, h2, h3, h4, h5, h6, blockquote, li, pre )::before
+, aside
+  { position : absolute
+  ; right : 100%
+  ; margin-right : 1em
+  ; display : inline-block
+  ; text-align : right
+  }
+
+:is( h1, h2, h3, h4, h5, h6, blockquote, li, pre )[dir=rtl]::before
+, [dir=rtl] :is( h1, h2, h3, h4, h5, h6, blockquote, li, pre )::before
+, [dir=rtl] aside, aside[dir=rtl]
+  { right : unset
+  ; left : 100%
+  ; margin-right : unset
+  ; margin-left : 1em
+  ; text-align : left
+  }
+:is( h1, h2, h3, h4, h5, h6, blockquote, li, pre ):dir(rtl)::before
+, :dir(rtl) :is( h1, h2, h3, h4, h5, h6, blockquote, li, pre )::before
+  { right : unset
+  ; left : 100%
+  ; margin-right : unset
+  ; margin-left : 1em
+  ; text-align : left
+  }
+
+h1::before
+  { content : '~' }
+h2::before
+  { content : '#' }
+h3::before
+  { content : '##' }
+h4::before
+  { content : '?' }
+h5::before
+  { content : '?' }
+h6::before
+  { content : '?' }
+blockquote::before
+  { content : '>' }
+ul > li::before
+  { content : '-' }
+ul ul > li::before
+  { content : '-\00a0-' }
+ul ul ul > li::before
+  { content : '-\00a0-\00a0-' }
+pre::before
+  { content : '```' }
+
+li
+  { list-style : none }
+
+ul.comma-separated li
+  { display : inline }
+ul.comma-separated li::before
+  { display : none }
+ul.comma-separated li:not(:last-child)::after
+  { content : ', ' }
+
+ol
+  { counter-reset : ol_lvl_1 }
+ol ol
+  { counter-reset : ol_lvl_2 }
+ol ol ol
+  { counter-reset : ol_lvl_3 }
+
+ol > li::before
+  { content : counter( ol_lvl_1 ) '.'
+  ; counter-increment : ol_lvl_1
+  }
+ol > li:has(ol:first-child)::before
+  { display : none }
+ol > li > ol:first-child > li::before
+  { background : var( --bg ) }
+
+ol ol > li::before
+  { content : counter( ol_lvl_1 ) '.' counter( ol_lvl_2 ) '.'
+  ; counter-increment : ol_lvl_2
+  }
+[dir=rtl] ol ol > li::before
+, ol[dir=rtl] ol > li::before
+, ol ol[dir=rtl] > li::before
+, ol ol > li[dir=rtl]::before
+  { content : counter( ol_lvl_2 ) '.' counter( ol_lvl_1 ) '.' }
+ol ol > li:dir(rtl)::before
+  { content : counter( ol_lvl_2 ) '.' counter( ol_lvl_1 ) '.' }
+
+ol ol > li:has(ol:first-child)::before
+  { display : none }
+ol ol > li > ol:first-child > li::before
+  { background : var( --bg ) }
+
+ol ol ol > li::before
+  { content : counter( ol_lvl_1 ) '.' counter( ol_lvl_2 ) '.' counter( ol_lvl_3 ) '.'
+  ; counter-increment : ol_lvl_3
+  }
+[dir=rtl] ol ol ol > li::before
+, ol[dir=rtl] ol ol > li::before
+, ol ol[dir=rtl] ol > li::before
+, ol ol ol[dir=rtl] > li::before
+, ol ol ol > li[dir=rtl]::before
+  { content : counter( ol_lvl_3 ) '.' counter( ol_lvl_2 ) '.' counter( ol_lvl_1 ) '.' }
+ol ol ol > li:dir(rtl)::before
+  { content : counter( ol_lvl_3 ) '.' counter( ol_lvl_2 ) '.' counter( ol_lvl_1 ) '.' }
+
+[title]::after
+  { content : '/*' attr(title) '*/'
+  ; display : inline
+  }
+
+h1, h2, h3, h4, h5, h6
+, blockquote
+, p
+, ul
+, ol
+, pre
+  { margin-top : var( --line-height )
+  ; margin-bottom : var( --line-height )
+  }
+:is( h2, h3, h4, h5, h6 )
+  { margin-top : calc( 2 * var( --line-height ) ) }
+
+:is( b, strong )::before
+, :is( b, strong )::after
+  { content : '**'
+  ; display : inline
+  }
+:is( b, strong )[title]::after
+  { content : '**/*' attr(title) '*/' }
+
+:is( i, em )::before
+, :is( i, em )::after
+  { content : '_'
+  ; display : inline
+  }
+:is( i, em )[title]::after
+  { content : '_/*' attr(title) '*/' }
+
+u::before
+, u::after
+  { content : '__'
+  ; display : inline
+  }
+u[title]::after
+  { content : '__/*' attr(title) '*/' }
+
+s::before
+, s::after
+  { content : '~~'
+  ; display : inline
+  }
+s[title]::after
+  { content : '~~/*' attr(title) '*/' }
+
+del::before
+, del::after
+  { content : '--'
+  ; display : inline
+  }
+del[title]::after
+  { content : '~~/*' attr(title) '*/' }
+
+ins::before
+, ins::after
+  { content : '++'
+  ; display : inline
+  }
+ins[title]::after
+  { content : '++/*' attr(title) '*/' }
+
+
+a:any-link::before
+  { content : '['
+  ; display : inline
+  }
+a:any-link::after
+  { content : ']'
+  ; display : inline
+  }
+a:any-link[title]::after
+  { content : ']/*' attr(title) '*/'
+  ; display : inline
+  }
+
+:is( a[href^='http'], a[href^='mailto'], a[href^='hyper'] )::before
+  { content : '['
+  ; display : inline
+  }
+:is( a[href^='http'], a[href^='mailto'], a[href^='hyper'] )::after
+  { content : '](' attr(href) ')'
+  ; display : inline
+  }
+:is( a[href^='http'], a[href^='mailto'], a[href^='hyper'] )[title]::after
+  { content : '](' attr(href) ')/*' attr(title) '*/'
+  ; display : inline
+  }
+
+:is( a[href^='/tag'], a[href^='/search?tag'] )::before
+  { content : '#'
+  ; display : inline
+  }
+:is( a[href^='/tag'], a[href^='/search?tag'] )::after
+  { content : ''
+  ; display : inline
+  }
+:is( a[href^='/tag'], a[href^='/search?tag'] )[title]::after
+  { content : '/*' attr(title) '*/'
+  ; display : inline
+  }
+
+:is( a[href^='/lang'], a[href^='/search?lang'] )::before
+  { content : '{'
+  ; display : inline
+  }
+:is( a[href^='/lang'], a[href^='/search?lang'] )::after
+  { content : '}'
+  ; display : inline
+  }
+:is( a[href^='/lang'], a[href^='/search?lang'] )[title]::after
+  { content : '}/*' attr(title) '*/'
+  ; display : inline
+  }
+
+aside
+  { width : 9em }
+aside::before
+  { content : '#['
+  ; display : inline
+  }
+aside::after
+  { content : ']#'
+  ; display : inline
+  }
+
+
+
+:is( code, samp )::before
+, :is( code, samp )::after
+  { content : '`'
+  ; display : inline
+  }
+:is( code, samp )[title]::after
+  { content : '`/*' attr(title) '*/' }
+
+abbr::before
+  { content : '[[' }
+abbr::after
+  { content : ']]' }
+abbr[title]::after
+  { content : ' | ' attr(title) ']]' }
+
+kbd::before
+  { content : '[' }
+kbd::after
+  { content : ']' }
+kbd[title]::after
+  { content : ']/*' attr(title) '*/' }
+
+var::before
+  { content : '{' }
+var::after
+  { content : '}' }
+var[title]::after
+  { content : '}/*' attr(title) '*/' }
+
+time::before
+  { content : '[' }
+time::after
+  { content : ']' }
+time[title]::after
+  { content : ']/*' attr(title) '*/' }
+
+cite::before
+  { content : '>>' }
+cite::after
+  { content : '<<' }
+cite[title]::after
+  { content : '<</*' attr(title) '*/' }
+
+q::before
+  { content : '^[' }
+q::after
+  { content : ']' }
+q[cite]::after
+  { content : '](' attr(cite) ')' }
+q[cite][title]::after
+  { content : '](' attr(cite) ')/*' attr(title) '*/' }
+
+
+pre code::before
+, pre code::after
+  { content : none }
+
+hr
+  { position : relative
+  ; height : var( --line-height )
+  ; font-size : 0
+  ; line-height : 0
+  ; overflow : hidden
+  ; border : 0
+  ; margin-bottom : var( --line-height )
+  }
+hr::after
+  { content : '----'
+  ; position : absolute
+  ; top : 0
+  ; left : 0
+  }
+
+input[type=checkbox]
+  {
+  ;
+  }
+
+input[type=radio]
+  {
+  ;
+  }
+
+input[type=text]
+  {
+  ;
+  }
+
+/* only works if image doesnt load */
+img
+  { display : inline
+  /*; overflow : hidden*/
+  }
+img::before
+  { content : '![' attr(alt) }
+img::after
+  { content : '](' attr(src) ')' }
+img[title]::after
+  { content : '](' attr(src) ')/*' attr(title) '*/' }
+
+
+/* colors */
+:root
+  { --red : hsl( 0, 93%, 59% )
+  ; --dark-red : hsl( 0, 93%, 39% )
+
+  ; --orange : hsl( 32, 98%, 56% )
+  ; --light-orange : hsl( 47, 100%, 79% )
+  ; --dark-orange : hsl( 30, 83%, 34% )
+
+  ; --yellow : hsl( 54, 70%, 68% )
+  ; --dark-yellow : hsla( 54, 70%, 68%, 35% )
+
+  ; --green : hsl( 80, 76%, 53% )
+
+  ; --blue : hsl( 190, 81%, 67% )
+  ; --dark-blue : hsl( 190, 81%, 67%, 20% )
+
+  ; --purple : hsl( 261, 100%, 75% )
+  ; --rose : hsl( 338, 95%, 56% )
+
+  ; --gray : hsl( 50, 11%, 41% )
+  ; --light-gray : hsl( 50, 11%, 81% )
+  ; --dark-gray : hsl( 50, 11%, 21% )
+  }
+
+[title]::after
+  { color : var( --gray ) }
+a[title]::after
+  { color : var( --rose ) }
+a:any-link
+, img::before
+, img::after
+  { color : var( --rose ) }
+
+abbr, abbr[title]::after
+  { color : var( --light-orange ) }
+
+h1, h2, h3, h4, h5, h6
+  { color : var( --orange ) }
+
+blockquote, cite
+  { color : var( --green ) }
+pre, code, samp
+  { background : var( --dark-gray ) }
+pre::before
+  { color : var( --gray ) }
+
+ul > li::before
+  { color : var( --green ) }
+ol > li::before
+  { color : var( --purple ) }
+
+time
+  { color : var( --purple ) }
+
+b, strong
+  { color : var( --red ) }
+i, em
+  { color : var( --blue ) }
+u
+  { color : var( --blue )
+  ; background : var( --dark-blue )
+  }
+s
+  { color : var( --light-gray )
+  ; background : var( --dark-gray )
+  }
+
+ins
+  { color : var( --bg )
+  ; background : var( --green )
+  }
+del
+  { color : var( --bg )
+  ; background : var( --red )
+  }
+del[title]::after
+  { color : var( --dark-gray ) }
+
+mark
+  { color : var( --bg )
+  ; background : var( --yellow )
+  }
+
+q, q[title]::after
+  { color : var( --green ) }
+
+:is( kbd, var )::before
+, :is( kbd, var )::after
+  { color : var( --gray ) }
+
+aside
+  { color : var( --yellow ) }
+
+h1
+  { color : var( --red ) }
+
+:is( a[href^='/lang'], a[href^='/search?lang'] )
+  { color : var( --blue ) }
