@@ -3,9 +3,9 @@
 > steps to create a website
 
 
-<a href='01-markdown/preview.png'><img height=100 border=2 align='right' alt='01-markdown' src='01-markdown/preview.png'></a>
-### [01 markdown](01-markdown)
-- [preview](01-markdown/preview.html)
+<a href='01-text/preview.png'><img height=100 border=2 align='right' alt='01-text' src='01-text/preview.png'></a>
+### [01 text](01-text)
+- [preview](01-text/preview.html)
 - https://codepen.io/dym-sh/pen/RwRQeYj/left/?editors=1000
 
 <a href='02-colors/preview.png'><img height=100 border=2 align='right' alt='02-colors' src='02-colors/preview.png'></a>
