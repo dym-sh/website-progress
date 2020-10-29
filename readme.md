@@ -3,20 +3,25 @@
 > steps to create a website
 
 
-## [01 markdown](01-markdown)
-
-<a href='01-markdown/preview.png'><img height=200 align='right' alt='01-markdown' src='01-markdown/preview.png'></a>
-
+<a href='01-markdown/preview.png'><img height=100 border=2 align='right' alt='01-markdown' src='01-markdown/preview.png'></a>
+### [01 markdown](01-markdown)
 - [preview](01-markdown/preview.html)
 - https://codepen.io/dym-sh/pen/RwRQeYj/left/?editors=1000
 
-
-## [02 colors](02-colors)
-
-<a href='02-colors/preview.png'><img height=200 align='right' alt='01-markdown' src='02-colors/preview.png'></a>
-
+<a href='02-colors/preview.png'><img height=100 border=2 align='right' alt='02-colors' src='02-colors/preview.png'></a>
+### [02 colors](02-colors)
 - [preview](02-colors/preview.html)
 - https://codepen.io/dym-sh/pen/dyXWLGZ/left/?editors=0100
+
+<a href='03-layout/preview.png'><img height=100 border=2 align='right' alt='03-layout' src='03-layout/preview.png'></a>
+### [03 layout](03-layout)
+- [preview](03-layout/preview.html)
+- https://codepen.io/dym-sh/pen/<TBD>/left/?editors=0100
+
+<a href='04-tbd/preview.png'><img height=100 border=2 align='right' alt='04-tbd' src='04-tbd/preview.png'></a>
+### [04 tbd](04-tbd)
+- [preview](04-tbd/preview.html)
+- https://codepen.io/dym-sh/pen/<TBD>/left/?editors=0100
 
 
 
