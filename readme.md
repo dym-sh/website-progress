@@ -18,12 +18,29 @@
 - [preview](03-layout/preview.html)
 - https://codepen.io/dym-sh/pen/<TBD>/left/?editors=0100
 
-<a href='04-tbd/preview.png'><img height=100 border=2 align='right' alt='04-tbd' src='04-tbd/preview.png'></a>
-### [04 tbd](04-tbd)
-- [preview](04-tbd/preview.html)
+<a href='04-typography/preview.png'><img height=100 border=2 align='right' alt='04-typography' src='04-typography/preview.png'></a>
+### [04 typography](04-typography)
+- [preview](04-typography/preview.html)
+- https://codepen.io/dym-sh/pen/<TBD>/left/?editors=0100
+
+<a href='05-TBD/preview.png'><img height=100 border=2 align='right' alt='05-TBD' src='05-TBD/preview.png'></a>
+### [05 TBD](05-TBD)
+- [preview](05-TBD/preview.html)
 - https://codepen.io/dym-sh/pen/<TBD>/left/?editors=0100
 
 
+## todo
+- content managment system (tags, languages, categories, sets, etc)
+- search, access-scopes, and pagination
+- syndication (rss, json-feed, activitypub)
+- aggregation and cross-posting (twitter, reddit, instagram, etc)
+- content managment system (tags, languages, categories, sets, etc)
+- search, access-scopes, and pagination
+
+### main content types
+- notes (micro-blog, articles)
+- gallery (drawings, photos)
+- lab (code-hosting, snippets, playground)
 
 
 
