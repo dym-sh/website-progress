@@ -2,7 +2,7 @@
   { --text : hsl( 60, 36%, 96% )
   ; --bg : hsl( 70, 8%, 15% )
   ; --font-size : 16pt
-  ; --line-height : 1.3em
+  ; --line-height : 1.5rem
   }
 
 
@@ -31,39 +31,24 @@ sub, sup
   { font-size : 0.66em }
 
 h1, h2, h3, h4, h5, h6
-, blockquote
-, pre
-, ol
-, ul
-, li
-, article
+, blockquote, pre, ol, ul, li
   { position : relative }
 
-:is( h1, h2, h3, h4, h5, h6, blockquote, li, pre )::before
+h1::before
+, h2::before
+, h3::before
+, h4::before
+, h5::before
+, h6::before
+, blockquote::before
+, li::before
+, pre::before
 , aside
   { position : absolute
   ; right : 100%
-  ; margin-right : 1em
+  ; margin-right : 1ch
   ; display : inline-block
   ; text-align : right
-  }
-
-:is( h1, h2, h3, h4, h5, h6, blockquote, li, pre )[dir=rtl]::before
-, [dir=rtl] :is( h1, h2, h3, h4, h5, h6, blockquote, li, pre )::before
-, [dir=rtl] aside, aside[dir=rtl]
-  { right : unset
-  ; left : 100%
-  ; margin-right : unset
-  ; margin-left : 1em
-  ; text-align : left
-  }
-:is( h1, h2, h3, h4, h5, h6, blockquote, li, pre ):dir(rtl)::before
-, :dir(rtl) :is( h1, h2, h3, h4, h5, h6, blockquote, li, pre )::before
-  { right : unset
-  ; left : 100%
-  ; margin-right : unset
-  ; margin-left : 1em
-  ; text-align : left
   }
 
 h1::before
@@ -152,24 +137,35 @@ ol ol ol > li:dir(rtl)::before
       }
   }
 
-:is( h1, h2, h3, h4, h5, h6
-, blockquote
-, p
-, ul
-, ol
-, pre
-  ):not(:first-child)
+h1:not(:first-child)
+, h2:not(:first-child)
+, h3:not(:first-child)
+, h4:not(:first-child)
+, h5:not(:first-child)
+, h6:not(:first-child)
+, blockquote:not(:first-child)
+, p:not(:first-child)
+, ul:not(:first-child)
+, ol:not(:first-child)
+, pre:not(:first-child)
   { margin-top : var( --line-height ) }
-h1, h2, h3, h4, h5, h6
-, blockquote
-, p
-, ul
-, ol
-, pre
+h1:not(:last-child)
+, h2:not(:last-child)
+, h3:not(:last-child)
+, h4:not(:last-child)
+, h5:not(:last-child)
+, h6:not(:last-child)
+, blockquote:not(:last-child)
+, p:not(:last-child)
+, ul:not(:last-child)
+, ol:not(:last-child)
+, pre:not(:last-child)
   { margin-bottom : var( --line-height ) }
 
-:is( b, strong )::before
-, :is( b, strong )::after
+b::before
+, strong::before
+, b::after
+, strong::after
   { content : '**'
   ; display : inline
   }
@@ -178,8 +174,10 @@ h1, h2, h3, h4, h5, h6
     { content : '**/*' attr(title) '*/' }
   }
 
-:is( i, em )::before
-, :is( i, em )::after
+i::before
+, em::before
+, i::after
+, em::after
   { content : '_'
   ; display : inline
   }
@@ -244,11 +242,13 @@ a:any-link::after
     }
   }
 
-:is( a[href^='/tag'], a[href^='/search?tag'] )::before
+a[href^='/tag']::before
+, a[href^='/search?tag']::before
   { content : '#'
   ; display : inline
   }
-:is( a[href^='/tag'], a[href^='/search?tag'] )::after
+a[href^='/tag']::after
+, a[href^='/search?tag']::after
   { content : ''
   ; display : inline
   }
@@ -258,11 +258,13 @@ a:any-link::after
     ; display : inline
     }
   }
-:is( a[href^='/lang'], a[href^='/search?lang'] )::before
+a[href^='/lang']::before
+, a[href^='/search?lang']::before
   { content : '{'
   ; display : inline
   }
-:is( a[href^='/lang'], a[href^='/search?lang'] )::after
+a[href^='/lang']::after
+, a[href^='/search?lang']::after
   { content : '}'
   ; display : inline
   }
@@ -410,6 +412,7 @@ img::after
 /* colors */
 :root
   { --red : hsl( 0, 93%, 59% )
+  ; --light-red : hsl( 0, 93%, 79% )
   ; --dark-red : hsl( 0, 93%, 39% )
 
   ; --orange : hsl( 32, 98%, 56% )
@@ -443,10 +446,20 @@ a:any-link
 , img::after
   { color : var( --rose ) }
 
+a[href^='/tag']
+, a[href^='/search?tag']
+  { color : var( --light-red ) }
+
 abbr, abbr[title]::after
   { color : var( --light-orange ) }
 
-h1, h2, h3, h4, h5, h6
+h1
+  { color : var( --red ) }
+
+.title-occupation
+  { color : var( --gray ) }
+
+h2, h3, h4, h5, h6
   { color : var( --orange ) }
 
 blockquote, cite
@@ -461,7 +474,7 @@ ul > li::before
 ol > li::before
   { color : var( --purple ) }
 
-time
+time, dt
   { color : var( --purple ) }
 
 b, strong
@@ -490,78 +503,145 @@ mark
   ; background : var( --yellow )
   }
 
-q, q[title]::after
+q
+, q[title]::after
   { color : var( --green ) }
 
-:is( kbd, var )::before
-, :is( kbd, var )::after
+kbd::before
+, var::before
+kbd::after
+, var::after
   { color : var( --gray ) }
 
 aside
   { color : var( --yellow ) }
 
-h1
-  { color : var( --red ) }
-
-:is( a[href^='/lang'], a[href^='/search?lang'] )
+a[href^='/lang']
+, a[href^='/search?lang']
   { color : var( --blue ) }
+
+
+r { animation : 6s linear infinite running rainbow }
+r:nth-of-type( n+1 ) { color : var( --red ); animation-delay : -6s }
+r:nth-of-type( n+2 ) { color : var( --orange ); animation-delay : -5s }
+r:nth-of-type( n+3 ) { color : var( --yellow ); animation-delay : -4s }
+r:nth-of-type( n+4 ) { color : var( --green ); animation-delay : -3s }
+r:nth-of-type( n+5 ) { color : var( --blue ); animation-delay : -2s }
+r:nth-of-type( n+6 ) { color : var( --purple ); animation-delay : -1s }
+
+@keyframes rainbow {
+  00.00% { color : var( --red ) }
+  16.66% { color : var( --orange ) }
+  33.33% { color : var( --yellow ) }
+  50.00% { color : var( --green ) }
+  66.66% { color : var( --blue ) }
+  83.33% { color : var( --purple ) }
+  100.0% { color : var( --red ) }
+}
 
 
 
 /* grid */
 body
   { background : var( --bg )
-  ; min-width : 25em
-  ; padding : 4rem
+  ; padding : calc( 3 * var( --line-height ) )
   ; display : grid
   ; grid-template-columns : 12rem 1fr 1fr
   ; grid-template-rows : auto
-  ; gap : 4rem
+  ; gap : calc( 3 * var( --line-height ) ) calc( 2 * var( --line-height ) )
   ; grid-template-areas :
     'title-header title-occupation title-description'
-    'skills-heared skills-list skills-speaking'
+    'skills-header skills-list skills-speaking'
     'personality-header personality-mindset personality-interests'
-    'cv-header cv-jobs cv-years'
-    'contacts-header contacts-networks contacts-networks'
+    'cv-header cv-jobs cv-education'
+    'networks-header networks-links networks-links'
   }
-section.title-description { grid-area : title-description; }
-section.title-header { grid-area : title-header; }
-section.title-occupation { grid-area : title-occupation; }
-section.skills-heared { grid-area : skills-heared; }
-section.skills-list { grid-area : skills-list; }
-section.skills-speaking { grid-area : skills-speaking; }
-section.personality-header { grid-area : personality-header; }
-section.personality-interests { grid-area : personality-interests; }
-section.personality-mindset { grid-area : personality-mindset; }
-section.cv-header { grid-area : cv-header; }
-section.contacts-header { grid-area : contacts-header; }
-section.cv-jobs { grid-area : cv-jobs; }
-section.cv-years { grid-area : cv-years; }
 
-section.contacts-networks
+section.title-description { grid-area : title-description }
+section.title-header { grid-area : title-header }
+section.title-occupation { grid-area : title-occupation }
+section.skills-header { grid-area : skills-header }
+section.skills-list { grid-area : skills-list }
+section.skills-speaking { grid-area : skills-speaking }
+section.personality-header { grid-area : personality-header }
+section.personality-interests { grid-area : personality-interests }
+section.personality-mindset { grid-area : personality-mindset }
+section.cv-header { grid-area : cv-header }
+section.networks-header { grid-area : networks-header }
+
+section.cv-jobs
+  { grid-area : cv-jobs
+  ; margin-left : -1ch
+  }
+section.cv-education { grid-area : cv-education }
+section.years
   { display : grid
+  ; grid-template-columns : auto 1fr
+  ; gap : 0 1ch
+  }
+
+
+section.networks-links
+  { grid-area : networks-links
+  ; display : grid
   ; grid-template-columns : repeat(4, 1fr)
-  ; grid-template-rows : 1fr
-  ; gap : 4rem
-  ; grid-template-areas:
-    'main code graphics media'
-  ; grid-area : contacts-networks
+  ; grid-template-rows : auto
+  ; gap : calc( 2 * var( --line-height ) )
+  ; grid-template-areas :
+    'contacts code graphics media'
   }
-section.code { grid-area : code; }
-section.graphics { grid-area : graphics; }
-section.media { grid-area : media; }
-section.main { grid-area : main; }
+section.code { grid-area : code }
+section.graphics { grid-area : graphics }
+section.media { grid-area : media }
+section.main { grid-area : main }
 
 
-/* For presentation only, no need to copy the code below */
-section.grid-container *
-  { border : 1px solid red
-  ; position : relative
-  }
+/* screen-sizes */
+@media( max-width : 1280px )
+{ body
+    { gap : var( --line-height )
+    ; grid-template-columns : 12rem 1fr
+    ; grid-template-areas :
+      'title-header title-occupation'
+      '. title-description'
+      'skills-header skills-list'
+      '. skills-speaking'
+      'personality-header personality-mindset'
+      '. personality-interests'
+      'cv-header cv-jobs'
+      '. cv-education'
+      'networks-header networks-links'
+      '. networks-links'
+    }
 
-section.grid-container *:after
-  { content:attr(class)
-  ; position : absolute
-  ; top : 0
-  ; left : 0
-  }
+  section.header, section.header + section
+    { margin-top : calc( 2 * var( --line-height ) ) }
+
+  section.networks-links
+    { gap : var( --line-height ) }
+
+  section.networks-links
+    { display : flex
+    ; flex-direction : column
+    ; gap : calc( 0.25 * var( --line-height ) )
+    }
+  section.networks-links ul
+    { display : flex
+    ; gap : 1ch
+    }
+}
+
+@media( max-width : 1023px )
+{ body
+    { display : flex
+    ; flex-direction: column
+    }
+
+  h2::before
+    { content : '+' }
+
+  section.header
+    { margin-top : calc( 2 * var( --line-height ) ) }
+  section.header + section
+    { margin-top : 0 }
+}
