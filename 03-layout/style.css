@@ -24,8 +24,7 @@
                 , monospace
   }
 
-a:any-link
-  { text-decoration : underline }
+a { text-decoration : underline }
 
 sub, sup
   { font-size : 0.66em }
@@ -311,7 +310,7 @@ abbr::after
   { content : '}' }
 @media( hover : none )
   { abbr[title]::after
-    { content : ' | ' attr(title) '}' }
+    { content : '}/*' attr(title) '*/' }
   }
 kbd::before
   { content : '[' }
@@ -545,6 +544,7 @@ r:nth-of-type( n+6 ) { color : var( --purple ); animation-delay : -1s }
 body
   { background : var( --bg )
   ; padding : calc( 3 * var( --line-height ) )
+  ; min-height : calc( 100vh - (6 * var( --line-height )) )
   ; display : grid
   ; grid-template-columns : 12rem 1fr 1fr
   ; grid-template-rows : auto
@@ -597,7 +597,7 @@ section.main { grid-area : main }
 
 
 /* screen-sizes */
-@media( max-width : 1280px )
+@media( max-width : 1279px )
 { body
     { gap : var( --line-height )
     ; grid-template-columns : 12rem 1fr
@@ -618,17 +618,14 @@ section.main { grid-area : main }
     { margin-top : calc( 2 * var( --line-height ) ) }
 
   section.networks-links
-    { gap : var( --line-height ) }
-
-  section.networks-links
     { display : flex
     ; flex-direction : column
     ; gap : calc( 0.25 * var( --line-height ) )
     }
   section.networks-links ul
-    { display : flex
-    ; gap : 1ch
-    }
+    { display : flex }
+  section.networks-links ul li:not( :last-child )
+    { margin-right : 1ch }
 }
 
 @media( max-width : 1023px )
