@@ -21,34 +21,38 @@
 <a href='04-typography/preview.png'><img height=100 border=2 align='right' alt='04-typography' src='04-typography/preview.png'></a>
 ### typography
 - [preview.html](04-typography/preview.html)
-- https://codepen.io/dym-sh/pen/<TBD>/left/?editors=0100
+- https://codepen.io/dym-sh/pen/___/left/?editors=0100
 
-<a href='05-TBD/preview.png'><img height=100 border=2 align='right' alt='05-TBD' src='05-TBD/preview.png'></a>
-### TBD
-- [preview.html](05-TBD/preview.html)
-- https://codepen.io/dym-sh/pen/<TBD>/left/?editors=0100
+<a href='05-textures/preview.png'><img height=100 border=2 align='right' alt='05-textures' src='05-textures/preview.png'></a>
+### textures
+- [preview.html](05-textures/preview.html)
+- https://codepen.io/dym-sh/pen/___/left/?editors=0100
+
+<a href='06-3d/preview.png'><img height=100 border=2 align='right' alt='06-3d' src='06-3d/preview.png'></a>
+### 3d
+- [preview.html](06-3d/preview.html)
+- https://codepen.io/dym-sh/pen/___/left/?editors=0100
 
 
 ## todo
-- content managment system (tags, languages, categories, sets, etc)
+- content managment system (tags, collections, languages...)
 - search, access-scopes, and pagination
-- syndication (rss, json-feed, activitypub)
-- aggregation and cross-posting (twitter, reddit, instagram, etc)
-- content managment system (tags, languages, categories, sets, etc)
-- search, access-scopes, and pagination
+- syndication (rss, json, activitypub)
+- aggregation and cross-posting (twitter, reddit, instagram...)
+- rest, grpc, graphQL apis
 
 ### main content types
-- notes (micro-blog, articles)
-- gallery (drawings, photos)
-- lab (code-hosting, snippets, playground)
+- text (status, article)
+- picrture (comic, graphic, photo)
+- code (repo, snippet, playground)
 
 
 
 ## mirrors
 - https://github.com/dym-sh/website-progress
 - https://gitlab.com/dym-sh/website-progress
-- https://dym.sh/lab/website-progress
-- hyper://6cff1f9372da66602ca344a9b41dc6de8266301e65e2dec59e65754fa67266c7 /[?](https://beakerbrowser.com)
+- https://dym.sh/website-progress
+- hyper://___ /[?](https://beakerbrowser.com)
 
 
 ## license
