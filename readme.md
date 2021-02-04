@@ -52,7 +52,7 @@
 - https://github.com/dym-sh/website-progress
 - https://gitlab.com/dym-sh/website-progress
 - https://dym.sh/website-progress
-- hyper://___ /[?](https://beakerbrowser.com)
+- hyper://eed54026abaf7b05f7e7abc4dabc29ac70dee5b7ce6f51d4312c835cad17486a /[?](https://beakerbrowser.com)
 
 
 ## license
